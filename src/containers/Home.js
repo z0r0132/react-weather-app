@@ -5,6 +5,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
+import WeatherCardListContainer from "./WeatherCardListContainer";
+
 const Home = () => {
   return (
     <div
@@ -14,6 +16,7 @@ const Home = () => {
         justifyContent: "center",
       }}
     >
+      <WeatherCardListContainer />
       <Card>
         <CardContent>
           <Typography variant="body1">Today's weather</Typography>
