@@ -4,10 +4,18 @@ import WeatherCardList from "../components/WeatherCardList";
 import { useWeatherForecast } from "../hooks/useWeatherForecast";
 
 const WeatherCardListContainer = () => {
-  const { data, isLoading, dispatchGetWeatherForecast } = useWeatherForecast();
+  const {
+    units,
+    weatherInfo,
+    data,
+    isLoading,
+    dispatchGetWeatherForecast,
+  } = useWeatherForecast();
 
   return (
     <WeatherCardList
+      units={units}
+      weatherInfo={weatherInfo}
       data={data}
       isLoading={isLoading}
       onGetWeatherForecast={dispatchGetWeatherForecast}

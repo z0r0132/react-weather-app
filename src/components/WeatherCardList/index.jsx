@@ -1,7 +1,17 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core";
+
+import WeatherForecastCarousel from "../WeatherForecastCarousel";
+
+import styles from "./styles";
+
+const useStyles = makeStyles(styles);
 
 const WeatherCardList = (props) => {
-  const { data, isLoading, onGetWeatherForecast } = props;
+  const { units, weatherInfo, data, isLoading, onGetWeatherForecast } = props;
+
+  const classes = useStyles();
 
   useEffect(() => {
     onGetWeatherForecast();
@@ -10,14 +20,22 @@ const WeatherCardList = (props) => {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <div>
-      <ul>
-        {data.list.map(({ dt, visibility }) => (
-          <li key={dt}>{visibility}</li>
-        ))}
-      </ul>
-    </div>
+    <WeatherForecastCarousel
+      carouselClass={classes.carousel}
+      units={units}
+      weatherInfo={weatherInfo}
+      data={data}
+    />
   );
+};
+
+WeatherCardList.defaultProps = {
+  weatherInfo: {},
+};
+
+WeatherCardList.propTypes = {
+  units: PropTypes.string,
+  weatherInfo: PropTypes.object.isRequired,
 };
 
 export default WeatherCardList;

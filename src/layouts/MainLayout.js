@@ -7,13 +7,13 @@ import Header from "../components/Header";
 const styles = (theme) => ({
   root: {
     display: "flex",
+    backgroundColor: theme.palette.background.dark,
+    color: theme.palette.common.white,
+    height: "100%",
   },
   content: {
     flexGrow: 1,
-    marginLeft: theme.spacing(9),
-    padding: theme.spacing(3),
     marginTop: theme.spacing(7),
-    overflowX: "hidden",
   },
 });
 

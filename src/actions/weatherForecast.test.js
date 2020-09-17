@@ -113,7 +113,7 @@ describe("async weatherForecast actions", () => {
 
   it("creates a GET_WEATHER_FORECAST_ERROR when an invalid statusCode is returned", () => {
     const location = "Munich,de";
-    const openWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${OPENWEATHERAPIKEY}&cnt=40`;
+    const openWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${OPENWEATHERAPIKEY}&units=imperial&cnt=40`;
     fetchMock.getOnce(openWeatherUrl, {
       status: 500,
       body: new Error("unexpected response"),
@@ -136,7 +136,7 @@ describe("async weatherForecast actions", () => {
 
   it("creates a GET_WEATHER_FORECAST_SUCCESS when successfully fetched weather forecast", () => {
     const location = "Munich,de";
-    const openWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${OPENWEATHERAPIKEY}&cnt=40`;
+    const openWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${OPENWEATHERAPIKEY}&units=imperial&cnt=40`;
     fetchMock.getOnce(openWeatherUrl, {
       status: 200,
       body: dummyWeatherForecastData,

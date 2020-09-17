@@ -21,6 +21,6 @@ const callAPI = (url, options = {}) =>
  * @param {string} location
  */
 export const fetchWeatherForecast = (location = "Munich,de") => {
-  const openWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${OPENWEATHERAPIKEY}&cnt=40`;
+  const openWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${OPENWEATHERAPIKEY}&units=imperial&cnt=40`;
   return callAPI(openWeatherUrl);
 };

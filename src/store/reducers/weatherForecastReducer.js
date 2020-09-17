@@ -4,7 +4,12 @@ import {
   GET_WEATHER_FORECAST_ERROR,
 } from "../../constants/weatherForecast";
 
-export const initialState = { action: "", error: null, data: { list: [] } };
+export const initialState = {
+  units: "fahrenheit",
+  action: "",
+  error: null,
+  data: { list: [] },
+};
 
 export default function weatherForecastReducer(state = initialState, action) {
   switch (action.type) {
