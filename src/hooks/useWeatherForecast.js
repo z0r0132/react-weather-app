@@ -1,7 +1,10 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getWeatherForecastAction } from "../actions/weatherForecast";
+import {
+  getWeatherForecastAction,
+  toggleUnitsAction,
+} from "../actions/weatherForecast";
 import { GET_WEATHER_FORECAST_START } from "../constants/weatherForecast";
 import {
   weatherForecastStateSelector,
@@ -15,6 +18,13 @@ export const useWeatherForecast = () => {
     dispatch(getWeatherForecastAction());
   }, [dispatch]);
 
+  const dispatchToggleUnits = useCallback(
+    (units) => {
+      dispatch(toggleUnitsAction(units));
+    },
+    [dispatch]
+  );
+
   const { units, action, error, data } = useSelector(
     weatherForecastStateSelector
   );
@@ -24,6 +34,7 @@ export const useWeatherForecast = () => {
 
   return {
     dispatchGetWeatherForecast,
+    dispatchToggleUnits,
     units,
     weatherInfo,
     data,

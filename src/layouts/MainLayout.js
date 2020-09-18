@@ -2,8 +2,6 @@ import React, { Fragment, Component } from "react";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 
-import Header from "../components/Header";
-
 const styles = (theme) => ({
   root: {
     display: "flex",
@@ -23,7 +21,6 @@ class MainLayout extends Component {
     return (
       <Fragment>
         <div className={classes.root}>
-          <Header />
           <main className={classNames(classes.content)}>{children}</main>
         </div>
       </Fragment>

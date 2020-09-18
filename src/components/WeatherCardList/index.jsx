@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core";
 
@@ -9,15 +9,9 @@ import styles from "./styles";
 const useStyles = makeStyles(styles);
 
 const WeatherCardList = (props) => {
-  const { units, weatherInfo, data, isLoading, onGetWeatherForecast } = props;
+  const { units, weatherInfo, data } = props;
 
   const classes = useStyles();
-
-  useEffect(() => {
-    onGetWeatherForecast();
-  }, [onGetWeatherForecast]);
-
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <WeatherForecastCarousel

@@ -4,6 +4,7 @@ import {
   GET_WEATHER_FORECAST_START,
   GET_WEATHER_FORECAST_SUCCESS,
   GET_WEATHER_FORECAST_ERROR,
+  TOGGLE_TEMP_UNITS,
 } from "../../constants/weatherForecast";
 
 describe("weatherForecast reducer", () => {
@@ -42,6 +43,19 @@ describe("weatherForecast reducer", () => {
       ...initialState,
       action: GET_WEATHER_FORECAST_ERROR,
       error: new Error("unexpected response"),
+    });
+  });
+
+  it("should handle TOGGLE_TEMP_UNITS", () => {
+    expect(
+      weatherForecastReducer(undefined, {
+        type: TOGGLE_TEMP_UNITS,
+        payload: "celsius",
+      })
+    ).toMatchObject({
+      ...initialState,
+      action: TOGGLE_TEMP_UNITS,
+      units: "celsius",
     });
   });
 });

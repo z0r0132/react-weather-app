@@ -2,6 +2,7 @@ import {
   GET_WEATHER_FORECAST_START,
   GET_WEATHER_FORECAST_SUCCESS,
   GET_WEATHER_FORECAST_ERROR,
+  TOGGLE_TEMP_UNITS,
 } from "../../constants/weatherForecast";
 
 export const initialState = {
@@ -29,6 +30,12 @@ export default function weatherForecastReducer(state = initialState, action) {
         ...state,
         action: action.type,
         error: action.payload.error,
+      };
+    case TOGGLE_TEMP_UNITS:
+      return {
+        ...state,
+        action: action.type,
+        units: action.payload,
       };
     default:
       return state;

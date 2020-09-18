@@ -2,6 +2,7 @@ import {
   GET_WEATHER_FORECAST_START,
   GET_WEATHER_FORECAST_SUCCESS,
   GET_WEATHER_FORECAST_ERROR,
+  TOGGLE_TEMP_UNITS,
 } from "../constants/weatherForecast";
 
 import { fetchWeatherForecast } from "../utils/api";
@@ -29,3 +30,8 @@ export const getWeatherForecastAction = () => async (dispatch) => {
     dispatch(getWeatherForecastError({ error }));
   }
 };
+
+export const toggleUnitsAction = (units) => ({
+  type: TOGGLE_TEMP_UNITS,
+  payload: units,
+});
