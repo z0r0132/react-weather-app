@@ -5,6 +5,7 @@ import {
   GET_WEATHER_FORECAST_SUCCESS,
   GET_WEATHER_FORECAST_ERROR,
   TOGGLE_TEMP_UNITS,
+  DATE_CHANGE,
 } from "../../constants/weatherForecast";
 
 describe("weatherForecast reducer", () => {
@@ -56,6 +57,19 @@ describe("weatherForecast reducer", () => {
       ...initialState,
       action: TOGGLE_TEMP_UNITS,
       units: "celsius",
+    });
+  });
+
+  it("should handle DATE_CHANGE", () => {
+    expect(
+      weatherForecastReducer(undefined, {
+        type: DATE_CHANGE,
+        payload: "2020-09-18",
+      })
+    ).toMatchObject({
+      ...initialState,
+      action: DATE_CHANGE,
+      date: "2020-09-18",
     });
   });
 });

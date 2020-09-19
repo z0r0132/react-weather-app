@@ -3,9 +3,11 @@ import {
   GET_WEATHER_FORECAST_SUCCESS,
   GET_WEATHER_FORECAST_ERROR,
   TOGGLE_TEMP_UNITS,
+  DATE_CHANGE,
 } from "../../constants/weatherForecast";
 
 export const initialState = {
+  date: "",
   units: "fahrenheit",
   action: "",
   error: null,
@@ -36,6 +38,12 @@ export default function weatherForecastReducer(state = initialState, action) {
         ...state,
         action: action.type,
         units: action.payload,
+      };
+    case DATE_CHANGE:
+      return {
+        ...state,
+        action: action.type,
+        date: action.payload,
       };
     default:
       return state;

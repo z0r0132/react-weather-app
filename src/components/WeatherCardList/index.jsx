@@ -9,7 +9,7 @@ import styles from "./styles";
 const useStyles = makeStyles(styles);
 
 const WeatherCardList = (props) => {
-  const { units, weatherInfo, data } = props;
+  const { units, weatherInfo, data, onDateChange } = props;
 
   const classes = useStyles();
 
@@ -19,6 +19,7 @@ const WeatherCardList = (props) => {
       units={units}
       weatherInfo={weatherInfo}
       data={data}
+      onDateChange={onDateChange}
     />
   );
 };

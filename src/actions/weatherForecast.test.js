@@ -5,12 +5,14 @@ import fetchMock from "fetch-mock";
 import {
   getWeatherForecastAction,
   toggleUnitsAction,
+  dateChange,
 } from "../actions/weatherForecast";
 import {
   GET_WEATHER_FORECAST_START,
   GET_WEATHER_FORECAST_SUCCESS,
   GET_WEATHER_FORECAST_ERROR,
   TOGGLE_TEMP_UNITS,
+  DATE_CHANGE,
 } from "../constants/weatherForecast";
 
 import { dummyWeatherForecastData } from "./dummyData";
@@ -81,5 +83,14 @@ describe("weatherForecast actions", () => {
       payload: units,
     };
     expect(toggleUnitsAction(units)).toEqual(expectedAction);
+  });
+
+  it("should create an action to change date", () => {
+    const date = "2020-09-18";
+    const expectedAction = {
+      type: DATE_CHANGE,
+      payload: date,
+    };
+    expect(dateChange(date)).toEqual(expectedAction);
   });
 });

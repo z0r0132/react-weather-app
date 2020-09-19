@@ -8,3 +8,9 @@ export const getWeatherInfoSelector = (state) => {
   } = weatherForecastStateSelector(state);
   return groupWeatherDataByDate(list);
 };
+
+export const getChartDataSelector = (state) => {
+  const { date } = weatherForecastStateSelector(state);
+  const weatherInfo = getWeatherInfoSelector(state);
+  return weatherInfo[date] || weatherInfo[Object.keys(weatherInfo)[0]];
+};

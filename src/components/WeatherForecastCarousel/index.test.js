@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import WeatherForecastCarousel from ".";
+import WeatherForecastCarousel, { NextArrow, PrevArrow } from ".";
 
 const wrap = (props = {}) => shallow(<WeatherForecastCarousel {...props} />);
 
@@ -20,4 +20,14 @@ it("renders null when list is empty", () => {
     weatherInfo: { sampleKey: [{}] },
   });
   expect(wrapper.find(".carousel").exists()).toBeFalsy();
+});
+
+it("renders NextArrow icon correctly", () => {
+  const wrapper = shallow(<NextArrow />);
+  expect(wrapper.find(".nextArrow").exists()).toBeTruthy();
+});
+
+it("renders PrevArrow icon correctly", () => {
+  const wrapper = shallow(<PrevArrow />);
+  expect(wrapper.find(".prevArrow").exists()).toBeTruthy();
 });

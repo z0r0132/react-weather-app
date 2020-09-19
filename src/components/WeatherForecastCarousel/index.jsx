@@ -13,7 +13,7 @@ import styles from "./styles";
 
 const useStyles = makeStyles(styles);
 
-const NextArrow = (props) => {
+export const NextArrow = (props) => {
   const { slidesToShow, currentSlide, slideCount, onClick } = props;
   const classes = useStyles({ slidesToShow, currentSlide, slideCount });
   return (
@@ -23,7 +23,7 @@ const NextArrow = (props) => {
   );
 };
 
-const PrevArrow = (props) => {
+export const PrevArrow = (props) => {
   const { currentSlide, onClick } = props;
   const classes = useStyles({ currentSlide });
   return (
@@ -33,7 +33,13 @@ const PrevArrow = (props) => {
   );
 };
 
-function WeatherForecastCarousel({ carouselClass, units, weatherInfo, data }) {
+const WeatherForecastCarousel = ({
+  carouselClass,
+  units,
+  weatherInfo,
+  data,
+  onDateChange,
+}) => {
   const classes = useStyles();
 
   const slidesToShow = useMemo(
@@ -55,15 +61,23 @@ function WeatherForecastCarousel({ carouselClass, units, weatherInfo, data }) {
       },
     ],
   };
+
   if (!data?.list?.length) return null;
+
   return (
     <div className={carouselClass}>
       <Slider {...settings} className={classes.slider}>
         {Object.entries(weatherInfo).map(([key, value]) => (
-          <WeatherForecastCard key={key} forecast={value[0]} units={units} />
+          <WeatherForecastCard
+            key={key}
+            id={key}
+            forecast={value[0]}
+            units={units}
+            onDateChange={onDateChange}
+          />
         ))}
       </Slider>
     </div>
   );
-}
+};
 export default WeatherForecastCarousel;

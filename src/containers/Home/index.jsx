@@ -1,7 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 
-import WeatherCardListContainer from "./WeatherCardListContainer";
+import WeatherCardListContainer from "../WeatherCardListContainer";
 
 const Home = () => {
   return (
@@ -18,6 +17,4 @@ const Home = () => {
   );
 };
 
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;

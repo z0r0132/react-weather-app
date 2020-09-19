@@ -55,3 +55,13 @@ export const groupedByDateData = {
     },
   ],
 };
+
+export const chartData = {
+  labels: ["15:00:00", "18:00:00", "15:00:00", "18:00:00"],
+  datasets: [
+    {
+      label: `Weather on 17 Sep 20 (per 3 hours)`,
+      data: [72, 64, 74, 69],
+    },
+  ],
+};

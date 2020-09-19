@@ -1,6 +1,6 @@
-import React, { Fragment, Component } from "react";
+import React from "react";
 import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
   root: {
@@ -15,17 +15,15 @@ const styles = (theme) => ({
   },
 });
 
-class MainLayout extends Component {
-  render() {
-    const { classes, children } = this.props;
-    return (
-      <Fragment>
-        <div className={classes.root}>
-          <main className={classNames(classes.content)}>{children}</main>
-        </div>
-      </Fragment>
-    );
-  }
-}
+const useStyles = makeStyles(styles);
 
-export default withStyles(styles)(MainLayout);
+const MainLayout = ({ children }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <main className={classNames(classes.content)}>{children}</main>
+    </div>
+  );
+};
+
+export default MainLayout;

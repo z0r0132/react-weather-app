@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { Typography } from "@material-ui/core";
@@ -8,40 +8,11 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 
 import { formatTemp, formatDate } from "../../utils/helpers";
+import styles from "./styles";
 
-const useStyles = makeStyles((theme) => ({
-  card: {
-    borderRadius: "1rem",
-    boxShadow: "none",
-    color: theme.palette.common.white,
-    minWidth: 200,
-    position: "relative",
-    "&:after": {
-      content: '""',
-      display: "block",
-      position: "absolute",
-      width: "100%",
-      height: "64%",
-      bottom: 0,
-      zIndex: 1,
-      background: "linear-gradient(to top, #000, rgba(0,0,0,0))",
-    },
-  },
-  content: {
-    position: "absolute",
-    zIndex: 2,
-    bottom: 0,
-    width: "100%",
-  },
-  h2: {
-    fontWeight: 400,
-  },
-  h5: {
-    textTransform: "capitalize",
-  },
-}));
+const useStyles = makeStyles(styles);
 
-const WeatherForecastCard = ({ forecast, units }) => {
+const WeatherForecastCard = ({ id, forecast, units, onDateChange }) => {
   const classes = useStyles();
   const {
     dt_txt: dt,
@@ -51,8 +22,12 @@ const WeatherForecastCard = ({ forecast, units }) => {
   const temperature = useMemo(() => formatTemp(temp, units), [temp, units]);
   const date = useMemo(() => formatDate(dt), [dt]);
 
+  const handleClick = useCallback(() => {
+    onDateChange(id);
+  }, [id, onDateChange]);
+
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} onClick={handleClick}>
       <CardMedia
         className={classes.media}
         component="img"
@@ -85,6 +60,8 @@ const WeatherForecastCard = ({ forecast, units }) => {
 };
 
 WeatherForecastCard.propTypes = {
+  id: PropTypes.string,
   forecast: PropTypes.object.isRequired,
+  onDateChange: PropTypes.func,
 };
 export default WeatherForecastCard;

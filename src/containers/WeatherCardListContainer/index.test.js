@@ -10,6 +10,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const store = mockStore({
   weatherForecast: {
+    date: "",
     units: "fahrenheit",
     action: "",
     error: null,
