@@ -5,6 +5,8 @@
 
 Basic weather app with [React](https://reactjs.org/) + [Redux](https://redux.js.org/introduction) and [material-ui framework](https://material-ui.com/) + [ESLint](https://eslint.org/)
 
+[Demo](https://brijesh-pant.github.io/react-weather-app/)
+
 ## Table of Contents
 
 1. [Installation](#getting-started)
