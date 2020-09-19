@@ -7,7 +7,7 @@ import {
 } from "../../constants/weatherForecast";
 
 export const initialState = {
-  date: "",
+  date: new Date(),
   units: "fahrenheit",
   action: "",
   error: null,

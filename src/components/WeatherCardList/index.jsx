@@ -9,7 +9,7 @@ import styles from "./styles";
 const useStyles = makeStyles(styles);
 
 const WeatherCardList = (props) => {
-  const { units, weatherInfo, data, onDateChange } = props;
+  const { units, date, weatherInfo, data, onDateChange } = props;
 
   const classes = useStyles();
 
@@ -17,6 +17,7 @@ const WeatherCardList = (props) => {
     <WeatherForecastCarousel
       carouselClass={classes.carousel}
       units={units}
+      date={date}
       weatherInfo={weatherInfo}
       data={data}
       onDateChange={onDateChange}
@@ -30,6 +31,7 @@ WeatherCardList.defaultProps = {
 
 WeatherCardList.propTypes = {
   units: PropTypes.string,
+  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
   weatherInfo: PropTypes.object.isRequired,
 };
 

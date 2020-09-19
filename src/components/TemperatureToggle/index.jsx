@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -36,6 +37,11 @@ const TemperatureToggle = ({ units, onToggleUnits }) => {
       </RadioGroup>
     </div>
   );
+};
+
+TemperatureToggle.propTypes = {
+  units: PropTypes.string,
+  onToggleUnits: PropTypes.func,
 };
 
 export default TemperatureToggle;

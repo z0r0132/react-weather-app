@@ -10,6 +10,7 @@ const Home = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        height: "100%",
       }}
     >
       <WeatherCardListContainer />

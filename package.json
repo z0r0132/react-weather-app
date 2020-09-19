@@ -18,10 +18,9 @@
     "react-chartjs-2": "^2.10.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "3.4.0",
     "react-slick": "^0.27.11",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1"
@@ -30,6 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coveralls": "yarn test --coverage && coveralls < coverage/lcov.info",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,11 +49,15 @@
   },
   "devDependencies": {
     "classnames": "^2.2.6",
+    "coveralls": "^3.1.0",
     "jest-canvas-mock": "^2.2.0"
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/*.{js,jsx}"
+      "src/**/*.{js,jsx}",
+      "!src/App.js",
+      "!src/index.js",
+      "!src/serviceWorker.js"
     ]
   }
 }

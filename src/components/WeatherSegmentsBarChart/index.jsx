@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
+
 import { makeStyles } from "@material-ui/core";
 
 import { convertDataForChart } from "../../utils/helpers";
@@ -28,6 +30,11 @@ const WeatherSegmentsBarChart = ({ units, chartData }) => {
       />
     </div>
   );
+};
+
+WeatherSegmentsBarChart.propTypes = {
+  units: PropTypes.string,
+  chartData: PropTypes.array,
 };
 
 export default WeatherSegmentsBarChart;

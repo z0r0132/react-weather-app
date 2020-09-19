@@ -12,8 +12,18 @@ import styles from "./styles";
 
 const useStyles = makeStyles(styles);
 
-const WeatherForecastCard = ({ id, forecast, units, onDateChange }) => {
-  const classes = useStyles();
+const WeatherForecastCard = ({
+  id,
+  forecast,
+  units,
+  date: activeDate,
+  onDateChange,
+}) => {
+  const classes = useStyles({
+    id: formatDate(id),
+    activeDate: formatDate(activeDate),
+  });
+
   const {
     dt_txt: dt,
     main: { temp },
@@ -62,6 +72,7 @@ const WeatherForecastCard = ({ id, forecast, units, onDateChange }) => {
 WeatherForecastCard.propTypes = {
   id: PropTypes.string,
   forecast: PropTypes.object.isRequired,
+  units: PropTypes.string,
   onDateChange: PropTypes.func,
 };
 export default WeatherForecastCard;

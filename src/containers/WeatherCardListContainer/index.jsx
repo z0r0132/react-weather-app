@@ -9,6 +9,7 @@ import { useWeatherForecast } from "../../hooks/useWeatherForecast";
 const WeatherCardListContainer = () => {
   const {
     units,
+    date,
     chartData,
     weatherInfo,
     data,
@@ -29,6 +30,7 @@ const WeatherCardListContainer = () => {
       <TemperatureToggle units={units} onToggleUnits={dispatchToggleUnits} />
       <WeatherCardList
         units={units}
+        date={date}
         weatherInfo={weatherInfo}
         data={data}
         isLoading={isLoading}

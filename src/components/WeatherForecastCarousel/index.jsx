@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -36,6 +37,7 @@ export const PrevArrow = (props) => {
 const WeatherForecastCarousel = ({
   carouselClass,
   units,
+  date,
   weatherInfo,
   data,
   onDateChange,
@@ -71,6 +73,7 @@ const WeatherForecastCarousel = ({
           <WeatherForecastCard
             key={key}
             id={key}
+            date={date}
             forecast={value[0]}
             units={units}
             onDateChange={onDateChange}
@@ -80,4 +83,14 @@ const WeatherForecastCarousel = ({
     </div>
   );
 };
+
+WeatherForecastCarousel.propTypes = {
+  carouselClass: PropTypes.string,
+  data: PropTypes.object,
+  units: PropTypes.string,
+  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+  weatherInfo: PropTypes.object.isRequired,
+  onDateChange: PropTypes.func,
+};
+
 export default WeatherForecastCarousel;

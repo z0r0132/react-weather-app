@@ -6,6 +6,7 @@ export default (theme) => ({
     cursor: "pointer",
     minWidth: 200,
     position: "relative",
+    border: ({ id, activeDate }) => activeDate === id && "2px solid",
     "&:after": {
       content: '""',
       display: "block",
